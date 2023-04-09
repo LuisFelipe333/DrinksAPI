@@ -24,5 +24,6 @@ def get_drink_types():
 @drink.post("/drink_types")
 def create_drink_type(drink_type: DrinkType):
     new_drink_type = {"drink_type_name": drink_type.drink_type_name, "cont_alcohol": drink_type.cont_alcohol, "has_brands": drink_type.has_brands}
-    result = conn.execute(drinkTypes.insert().values(new_drink_type))
-    return result.lastrowid
+    result = conn.execute(drinkTypes.insert().values(new_drink_type)) 
+    conn.commit()
+    return "received"
