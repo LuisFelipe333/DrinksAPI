@@ -12,4 +12,8 @@ def get_drinks():
     
 @drink.post("/drinks")
 def create_drink(drink: Drink):
-    print(drink)
+    new_drink = {"drink_type_id": drink.drink_type_id, "name": drink.name, "brand": drink.brand, "app_price": drink.app_price, "quantity": drink.quantity}
+    result = conn.execute(drinks.insert().values(new_drink))
+    return result 
+
+
