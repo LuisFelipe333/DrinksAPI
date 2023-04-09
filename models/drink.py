@@ -8,7 +8,8 @@ drinks = Table("Drinks", meta, Column(
     Column("drink_type_id", Integer, ForeignKey("drink_types.id"), nullable=False),
     Column("name", String(255)),
     Column("brand", String(255)),
-    Column("app_price", Integer))
+    Column("app_price", Integer),
+    Column("quantity", Integer))
 
 
 
