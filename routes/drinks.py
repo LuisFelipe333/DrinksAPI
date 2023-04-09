@@ -8,4 +8,5 @@ drink = APIRouter()
 @drink.get("/drinks")
 def get_drinks():
     return conn.execute(drinks.select()).fetchall
+    
 
