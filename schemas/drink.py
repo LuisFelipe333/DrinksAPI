@@ -7,3 +7,4 @@ class Drink(BaseModel):
     name: str
     brand: str
     app_price: int
+    quantity: int
