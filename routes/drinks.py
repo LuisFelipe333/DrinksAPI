@@ -15,7 +15,8 @@ def get_drinks():
 def create_drink(drink: Drink):
     new_drink = {"drink_type_id": drink.drink_type_id, "name": drink.name, "brand": drink.brand, "app_price": drink.app_price, "quantity": drink.quantity}
     result = conn.execute(drinks.insert().values(new_drink))
-    return result
+    conn.commit()
+    return "received"
 
 @drink.get("/drink_types")
 def get_drink_types():
