@@ -7,5 +7,5 @@ from models.coctail import coctails
 relationIngredients = Table("relation_ingredients", meta, Column(
     "id", Integer, primary_key=True),
     Column("drink_type_id", Integer, ForeignKey("drink_types.id"), nullable=False),
-    Column("coctails_id", Integer, ForeignKey("coctails.id"), nullable=False),
+    Column("coctail_id", Integer, ForeignKey("coctails.id"), nullable=False),
     Column("quantity", Integer))
