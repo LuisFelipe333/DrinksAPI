@@ -37,4 +37,3 @@ def create_drink_type(drink_type: DrinkType):
     result = conn.execute(drinkTypes.insert().values(new_drink_type)) 
     conn.commit()
     return conn.execute(drinkTypes.select().where(drinkTypes.c.id == result.lastrowid)).first()._mapping
-
