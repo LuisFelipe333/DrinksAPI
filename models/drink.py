@@ -3,6 +3,7 @@ from sqlalchemy.sql.sqltypes import String, Integer
 from config.db import meta, engine
 from models.drinkType import drinkTypes
 
+
 drinks = Table("drinks", meta, Column(
     "id", Integer, primary_key=True),
     Column("drink_type_id", Integer, ForeignKey("drink_types.id"), nullable=False),

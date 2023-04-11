@@ -2,8 +2,12 @@ from fastapi import APIRouter
 from config.db import conn
 from models.drink import drinks
 from models.drinkType import drinkTypes
+from models.coctail import coctails
+from models.relationIngredient import relationIngredients
 from schemas.drink import Drink
 from schemas.drinkType import DrinkType
+from schemas.coctail import Coctail
+from schemas.relationIngredient import RelationIngredient 
 from sqlalchemy import select
 
 drink = APIRouter()
@@ -37,3 +41,14 @@ def create_drink_type(drink_type: DrinkType):
     result = conn.execute(drinkTypes.insert().values(new_drink_type)) 
     conn.commit()
     return conn.execute(drinkTypes.select().where(drinkTypes.c.id == result.lastrowid)).first()._mapping
+
+@drink.get("/coctails")
+def get_drinks():
+    return conn.execute(coctails.select()).fetchall
+
+@drink.post("/coctails")
+def create_coctail(coctail: Coctail):
+    new_coctail = {"name": coctail.name}
+    result = conn.execute(coctails.insert().values(new_coctail))
+    conn.commit()
+    return conn.execute(coctails.select().where(coctails.c.id == result.lastrowid)).first()._mapping
