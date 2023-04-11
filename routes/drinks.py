@@ -11,6 +11,10 @@ drink = APIRouter()
 @drink.get("/drinks")
 def get_drinks():
     return conn.execute(drinks.select()).fetchall
+
+@drink.get("/drinks/{id}")
+def get_drinks(id: int):    
+    return conn.execute(drinks.select().where(drinks.c.id == id)).first()._mapping
     
 @drink.post("/drinks")
 def create_drink(drink: Drink):
